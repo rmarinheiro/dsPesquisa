@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import br.com.rafael.dspesquisa.entities.enums.Plataform;
 
 @Entity
