@@ -28,5 +28,63 @@ export default Routes;
 	-No componente onde deseja inserir o link colocar a seguinte tag:
 	<Link to="/">
 
+- Integração Back/Front React
 
+	-Importar uma lib do React chamada Axios(npm install axios);
+	-Importar o componente useEffect(componente que será inicializado quando o componente for instanciado);
+	-Importar o componente axios e usar a seguite sintaxe:
+	 OBSIMP: BASE_URL e a variavel criada dentro do componente para acessar o backend;
+	  	useEffect(()=>{
+            	//console.log('componente iniciado')
+            	axios.get(`${BASE_URL}/records?linesPerPage=12`)
+            	.then(response => console.log("Deu certo"))
+        	}, []);
+	-Criar um arquivo type.ts com os parametros que vao costar no backend exemplo:
 
+	export type RecordsResponse ={
+    		content:RecordItem[];
+    		totalPages:Number;
+	}
+
+	export type RecordItem = {
+    	id:number; 
+    	moment: string;
+    	name:string;
+    	age:number;
+    	gameTitle: string;
+    	gamePlataform: Plataform;
+    	genreName: string
+}
+
+export type Plataform = 'XBOX' | 'PC' | 'PLAY'
+	
+-Após isso utilzar o componente useState da seguinte forma:
+
+const [recordsResponse,setRecordsResponse] = useState<RecordsResponse>();
+
+-Para popular os campos da tabela usar a seguinte estrutura dentro do componente
+
+ {recordsResponse?.content.map(record => (
+                        <tr key={record.id}>
+                            <td>
+                                {record.moment}
+                        </td>
+                            <td>
+                                {record.name}
+                        </td>
+                            <td>
+                                {record.age}
+                        </td>
+                            <td className="text-secondary">
+                                {record.gamePlataform}
+                        </td>
+                            <td>
+                                {record.genreName}
+                        </td>
+                            <td className="text-primary">
+                                {record.gameTitle}
+                        </td>
+                        </tr>
+                    ))}
+
+-Formatar data importar a lib moment(npm install moment);
