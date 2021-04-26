@@ -1,0 +1,32 @@
+Notas importantes para desenvolvimento React:
+
+-Rotas
+	-Instalar o react-router-dom (npm install react-router-dom);
+	-Criar o arquivo Routes dentro src;
+	-Instalar o componente BrowserModule(npm i --save-dev @types/react-router-dom);
+	-Criar a seguinte estrutura no arquivo BrowserModules;
+		
+const Routes = () =>(
+    	<BrowserRouter>
+       	 <Header/>
+       	 <Switch>
+            <Route path="/" exact>
+                <Home/>
+            </Route>
+        </Switch>
+        <Switch>
+            <Route path="/records" >
+                <Records/>
+            </Route>
+        </Switch>
+    </BrowserRouter>
+	)
+
+export default Routes;
+
+	-No arquivo app.tsx importar o componente Routes;
+	-No componente onde deseja inserir o link colocar a seguinte tag:
+	<Link to="/">
+
+
+
