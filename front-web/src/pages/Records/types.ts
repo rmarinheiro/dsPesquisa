@@ -1,6 +1,6 @@
 export type RecordsResponse ={
     content:RecordItem[];
-    totalPages:Number;
+    totalPages:number;
 }
 
 export type RecordItem = {

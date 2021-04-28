@@ -3,20 +3,36 @@ import axios from 'axios';
 import './styles.css';
 import {formatDate} from './helpers'
 import { RecordsResponse } from './types';
+import Pagination from './Pagination';
+import { Link } from 'react-router-dom'
 
 const BASE_URL = 'http://demo-pesquisa.herokuapp.com'
 
+
+
 const Records = () => {
     const [recordsResponse, setRecordsResponse] = useState<RecordsResponse>();
-    console.log(recordsResponse);
+    const[activePage,setActivePage]=useState(0)
+
+    const handlePaginationChange = (index:number)=>{
+        setActivePage(index)
+    }
+    
     useEffect(() => {
         //console.log('componente iniciado')
-        axios.get(`${BASE_URL}/records?linesPerPage=12`)
+        axios.get(`${BASE_URL}/records?linesPerPage=12&page=${activePage}`)
             .then(response => setRecordsResponse(response.data));
-    }, []);
+    }, [activePage]);
 
     return (
         <div className="page-container">
+            <div className="filters-container records-actions">
+                <Link to="/charts">
+                    <button className="action-filters">
+                        Ver Gráfico
+                    </button>
+                </Link>
+            </div>
             <table className="records-table" cellPadding="0" cellSpacing="0">
                 <thead>
                     <tr>
@@ -54,6 +70,11 @@ const Records = () => {
                     ))}
                 </tbody>
             </table>
+            <Pagination 
+                activePage={activePage}
+                goToPage={handlePaginationChange}
+                totalPages = {recordsResponse?.totalPages}
+                />
         </div>
     )
 }

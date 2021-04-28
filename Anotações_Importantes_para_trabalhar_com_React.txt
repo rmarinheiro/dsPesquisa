@@ -1,5 +1,9 @@
 Notas importantes para desenvolvimento React:
 
+-Criação de um projeto React
+	npx create-react-app <nome da app> --template=typescript
+	(npm run start)
+
 -Rotas
 	-Instalar o react-router-dom (npm install react-router-dom);
 	-Criar o arquivo Routes dentro src;
@@ -88,3 +92,11 @@ const [recordsResponse,setRecordsResponse] = useState<RecordsResponse>();
                     ))}
 
 -Formatar data importar a lib moment(npm install moment);
+	-Criar o arquivo helpers.tsx com a seguinte estrutura:
+
+	import moment from 'moment';
+
+	export const formatDate =(date:string) => {
+    		return moment(date).format('DD/MM/YYYY HH:mm')
+	}
+
