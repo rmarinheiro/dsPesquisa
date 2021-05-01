@@ -100,3 +100,4 @@ const [recordsResponse,setRecordsResponse] = useState<RecordsResponse>();
     		return moment(date).format('DD/MM/YYYY HH:mm')
 	}
 
+-Lib para trabalhar com graficos (npm install react-apexcharts / npm install apexcharts)  

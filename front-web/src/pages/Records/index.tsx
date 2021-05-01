@@ -5,6 +5,7 @@ import {formatDate} from './helpers'
 import { RecordsResponse } from './types';
 import Pagination from './Pagination';
 import { Link } from 'react-router-dom'
+import Filters from '../../componentes/Filters';
 
 const BASE_URL = 'http://demo-pesquisa.herokuapp.com'
 
@@ -26,13 +27,7 @@ const Records = () => {
 
     return (
         <div className="page-container">
-            <div className="filters-container records-actions">
-                <Link to="/charts">
-                    <button className="action-filters">
-                        Ver Gráfico
-                    </button>
-                </Link>
-            </div>
+            <Filters link="/charts" linkText="Ver Gráfico" />
             <table className="records-table" cellPadding="0" cellSpacing="0">
                 <thead>
                     <tr>
